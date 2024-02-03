@@ -1,12 +1,21 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { UserContext } from "./Context/UserContext";
+import Home from "./Home";
+import Adduser from "./Adduser";
 
 function App() {
+  const datalist = [
+    { id: 1, name: "Rasel" },
+    { id: 2, name: "Raihan" },
+  ];
+  const [data, setData] = useState(datalist);
   return (
-    <div>
-      <p className="bg-red-600">rasel</p>
-    </div>
+    <UserContext.Provider value={{ data, setData }}>
+      <main className="p-5 min-h-screen bg-gray-950 text-white">
+        <Adduser />
+        <Home />
+      </main>
+    </UserContext.Provider>
   );
 }
 
